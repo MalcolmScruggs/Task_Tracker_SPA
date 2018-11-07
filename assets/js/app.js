@@ -18,3 +18,9 @@ import "phoenix_html"
 import jQuery from 'jquery';
 window.jQuery = window.$ = jQuery; // Bootstrap requires a global "$" object.
 import "bootstrap";
+
+import root_init from "./root";
+$(() => {
+    let node = $('#root')[0];
+    root_init(node);
+});
