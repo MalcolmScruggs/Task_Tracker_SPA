@@ -19,6 +19,13 @@ defmodule TasksSpaWeb.Router do
     get "/", PageController, :index
   end
 
+  scope "/api/v1", TasksSpaWeb do
+    pipe_through :api
+
+    resources "/users", UserController
+    resources "/tasks", TaskController
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", TasksSpaWeb do
   #   pipe_through :api
