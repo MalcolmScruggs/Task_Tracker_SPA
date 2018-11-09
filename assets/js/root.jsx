@@ -36,12 +36,6 @@ class Root extends React.Component {
                     <Route path="/" exact={true} render={() =>
                         <TaskList />
                     }/>
-                    <Route path="/newtask" exact={true} render={() =>
-                        <div>
-                            <div className="col-12"><h2>New Task</h2></div>
-                            <NewTask />
-                        </div>
-                    } />
                 </div>
             </Router>
         </div>
