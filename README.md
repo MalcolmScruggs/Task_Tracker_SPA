@@ -2,6 +2,7 @@
 
 * All users can preform all actions
 * Passwords are limited in length according to the comonin library
+* Inputs preserved on making new task, editing task, and registering to allow users to save "drafts"
 * State on editing tasks is preserved if it is a bad request, in other situations failed alerts are given
 
 To start your Phoenix server:

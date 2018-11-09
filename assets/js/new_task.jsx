@@ -47,8 +47,12 @@ export default class NewTask extends React.Component {
     }
 
     handleSubmit(ev) {
-        this.state.id ? api.edit_task(this.state) : api.new_task(this.state);
-        this.setState({redirect: true});
+        if (this.state.id) {
+            api.edit_task(this.state);
+        } else {
+            api.new_task(this.state);
+            this.setState(newTask);
+        }
     }
 
     renderRedirect() {
@@ -74,7 +78,7 @@ export default class NewTask extends React.Component {
                 <div className="form-check">
                     <label className="form-check-label">
                         <input type="checkbox" className="form-check-input"
-                           value={this.state.title} onChange={this.changeCompleted}/>
+                               checked={this.state.completed} onChange={this.changeCompleted}/>
                         Completed
                     </label>
                 </div>
@@ -96,13 +100,15 @@ export default class NewTask extends React.Component {
     }
 }
 
+const newTask = {
+    id: null,
+    title: "",
+    desc: "",
+    completed: false,
+    time: 0,
+    assigned: ""
+};
+
 NewTask.defaultProps = {
-    task: {
-        id: null,
-        title: "",
-        desc: "",
-        completed: false,
-        time: 0,
-        assigned: ""
-    }
+    task: newTask
 };
