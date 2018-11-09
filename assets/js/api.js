@@ -47,28 +47,23 @@ class TheServer {
     }
 
     new_task(task) {
-        console.log("new task", task);
         this.send_post(
             "/api/v1/tasks",
             {task: task},
             (resp) => {
-                console.log(resp);
                 this.fetch_tasks();
             },
             (resp) => {
-                console.log(resp);
                 alert("Failed to create new task");
             }
         )
     }
 
     new_user(user) {
-        console.log(JSON.stringify({user: user}));
         this.send_post(
             "/api/v1/users",
             {user: user},
             (resp) => {
-                console.log(resp);
                 this.create_session(user.email, user.password)
             },
             (resp) => {
@@ -108,26 +103,22 @@ class TheServer {
     }
 
     edit_task(task) {
-        console.log("edit task", task);
         this.send_patch(
             `/api/v1/tasks/${task.id}`,
             {task: task},
             (resp) => {
-                console.log(resp);
                 this.fetch_tasks();
             }
         )
     }
 
     delete_task(id) {
-        console.log("deleteTask", id);
         $.ajax('/api/v1/tasks/' + id, {
             method: "delete",
             dataType: "json",
             contentType: "application/json; charset=UTF-8",
             data: "",
             success: (resp) => {
-                console.log(resp);
                 store.dispatch({
                     type: 'TASK_DELETE',
                     task_id: id,

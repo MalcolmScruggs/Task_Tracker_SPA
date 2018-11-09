@@ -8,7 +8,6 @@ import api from './api';
 
 //Wrapper component to allow displaying based on session information
 function LoginHead(props) {
-    console.log("loginHead", props);
     let {session, dispatch} = props;
     if (session) {
         return <div className="col-8">

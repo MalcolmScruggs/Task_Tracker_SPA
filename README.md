@@ -1,4 +1,8 @@
-# TasksSpa
+# TasksSpa Design Decisions
+
+* All users can preform all actions
+* Passwords are limited in length according to the comonin library
+* State on editing tasks is preserved if it is a bad request, in other situations failed alerts are given
 
 To start your Phoenix server:
 

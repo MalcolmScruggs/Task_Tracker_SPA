@@ -35,7 +35,7 @@ function Task(props) {
             </ul>
             <div className="card-body">
                 <button type="button" className="btn btn-primary" data-toggle="modal" data-target={"#taskModal" + task.id}>Edit</button>
-                <button type="button" className="btn btn-danger" onClick={() => {api.delete_task(task.id)}}>Delete</button>
+                <button type="button" className="btn btn-danger mx-2" onClick={() => {api.delete_task(task.id)}}>Delete</button>
             </div>
         </div>
         <div className="modal fade" id={"taskModal" + task.id} tabIndex="-1" role="dialog" aria-labelledby={`taskModal${task.id}Label`} aria-hidden="true">
@@ -58,7 +58,8 @@ function Task(props) {
 
 function state2props(state) {
     return {
-        tasks: state.tasks
+        tasks: state.tasks,
+        users: state.users
     }
 }
 

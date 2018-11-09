@@ -42,15 +42,15 @@ export default class Login extends React.Component {
                     <input type="password" className="form-control" id="inputPassword"
                            onChange={this.changePassword} value={this.state.password} placeholder="Password" />
                 </div>
-                <div className="btn btn-primary mb-2" onClick={this.handleSubmit}>Login</div>
+                <div className="btn btn-primary mb-2 mx-2" onClick={this.handleSubmit}>Login</div>
 
-                <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#newUserModal">Create Account</button>
+                <button type="button" className="btn btn-primary mb-2" data-toggle="modal" data-target="#newUserModal">Create Account</button>
             </form>
             <div className="modal fade" id="newUserModal" tabIndex="-1" role="dialog" aria-labelledby="newUserModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="newUserModalLabel">Edit Task</h5>
+                            <h5 className="modal-title" id="newUserModalLabel">Register User</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
