@@ -82,11 +82,11 @@ get_secret = fn name ->
   String.trim(File.read!(path))
 end
 
-config :task_tracker, TasksSpaWeb.Endpoint,
+config :tasks_spa, TasksSpaWeb.Endpoint,
        secret_key_base: get_secret.("key_base");
 
 # Configure your database
-config :task_tracker, TasksSpa.Repo,
+config :tasks_spa, TasksSpa.Repo,
        username: "task_tracker_spa",
        password: get_secret.("db_pass"),
        database: "task_tracker_spa",
