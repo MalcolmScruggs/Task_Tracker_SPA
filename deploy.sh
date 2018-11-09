@@ -22,4 +22,4 @@ mix release
 
 echo "Starting app..."
 
-_build/prod/rel/task_tracker/bin/task_tracker foreground
+_build/prod/rel/tasks_spa/bin/tasks_spa foreground
