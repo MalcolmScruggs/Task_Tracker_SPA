@@ -13,7 +13,7 @@ function TaskList(props) {
         tsk.push(<Task key={key} dispatch={dispatch} task={t}/>)});
     return <div className="row">
         <div className="col-12">
-        <Link to={"/newtask"}>New Task</Link>
+            <Link to={"/newtask"} className="btn btn-primary" style={{color: '#fff', textDecoration: 'none'}}>New Task</Link>
         </div>
         {tsk}
     </div>
@@ -23,7 +23,7 @@ function Task(props) {
     let {task, dispatch} = props;
 
     return <div className="col-12">
-        <div className="card">
+        <div className="card my-2">
             <div className="card-body">
                 <h3 className="card-title">{task.title}</h3>
                 <h5 className="card-subtitle text-muted">{task.desc}</h5>
@@ -57,7 +57,6 @@ function Task(props) {
 }
 
 function state2props(state) {
-    console.log("state2props", state);
     return {
         tasks: state.tasks
     }

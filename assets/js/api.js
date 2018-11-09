@@ -35,13 +35,14 @@ class TheServer {
         )
     }
 
-    send_post(path, data, callback) {
+    send_post(path, data, callback, errorCallback) {
         $.ajax(path, {
             method: "post",
             dataType: "json",
             contentType: "application/json; charset=UTF-8",
             data: JSON.stringify(data),
             success: callback,
+            error: errorCallback
         });
     }
 
@@ -53,8 +54,47 @@ class TheServer {
             (resp) => {
                 console.log(resp);
                 this.fetch_tasks();
+            },
+            (resp) => {
+                console.log(resp);
+                alert("Failed to create new task");
             }
         )
+    }
+
+    new_user(user) {
+        console.log(JSON.stringify({user: user}));
+        this.send_post(
+            "/api/v1/users",
+            {user: user},
+            (resp) => {
+                console.log(resp);
+                this.create_session(user.email, user.password)
+            },
+            (resp) => {
+                alert("Failed to create user");
+            }
+        )
+    }
+
+    create_session(email, password) {
+        this.send_post(
+            "/api/v1/sessions",
+            {email, password},
+            (resp) => {
+                store.dispatch({
+                    type: 'NEW_SESSION',
+                    data: resp.data,
+                    });
+            },
+            (resp) => {
+                alert("Login failed")
+            }
+        )
+    }
+
+    end_session() {
+        store.dispatch({ type: 'END_SESSION' });
     }
 
     send_patch(path, data, callback) {

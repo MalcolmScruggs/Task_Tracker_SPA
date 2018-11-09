@@ -37,6 +37,8 @@ function session(state = null, action) {
     switch (action.type) {
         case 'NEW_SESSION':
             return action.data;
+        case 'END_SESSION':
+            return null;
         default:
             return state;
     }

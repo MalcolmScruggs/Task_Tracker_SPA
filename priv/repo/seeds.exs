@@ -14,8 +14,10 @@ alias TasksSpa.Repo
 alias TasksSpa.Users.User
 alias TasksSpa.Tasks.Task
 
-Repo.insert!(%User{email: "jim@example.com", password_hash: "todo", admin: true})
-Repo.insert!(%User{email: "alex@example.com", password_hash: "todo", admin: false})
+pwhash = Argon2.hash_pwd_salt("pass1")
+
+Repo.insert!(%User{email: "jim@example.com", password_hash: pwhash, admin: true})
+Repo.insert!(%User{email: "alex@example.com", password_hash: pwhash, admin: false})
 
 
 Repo.insert!(%Task{title: "Homework", desc: "Do it", completed: false})

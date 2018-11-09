@@ -7,6 +7,8 @@ import { Link, BrowserRouter as Router, Route } from 'react-router-dom';
 import api from './api';
 import TaskList from './task_list';
 import NewTask from './new_task';
+import Login from './login';
+import LoginHead from './login_head';
 
 export default function root_init(node, store) {
     ReactDOM.render(
@@ -22,6 +24,7 @@ class Root extends React.Component {
             tasks: props.tasks,
         };
 
+        //api.create_session("jim@example.com", "pass1");
         api.fetch_tasks();
         api.fetch_users();
     }
@@ -48,15 +51,11 @@ class Root extends React.Component {
 
 function Header(props) {
     return <div className="row my-2">
-        <div className="col-6">
+        <div className="col-4">
             <h1><Link to={"/"}>Task List</Link></h1>
         </div>
-        <div className="col-6">
-            <div className="form-inline my-2">
-                <input type="email" placeholder="email" />
-                <input type="password" placeholder="password" />
-                <button className="btn btn-secondary">Login</button>
-            </div>
-        </div>
+            <Route path="/" render={() =>
+                <LoginHead />
+            } />
     </div>;
 }

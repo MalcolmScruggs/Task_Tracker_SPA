@@ -8,6 +8,7 @@ defmodule TasksSpaWeb.UserController do
 
   def index(conn, _params) do
     users = Users.list_users()
+    |> Enum.map(&(Map.take(&1, [:id, :admin, :email])))
     render(conn, "index.json", users: users)
   end
 

@@ -22,12 +22,9 @@ defmodule TasksSpaWeb.Router do
   scope "/api/v1", TasksSpaWeb do
     pipe_through :api
 
+    resources "/sessions", SessionController, only: [:create]
+
     resources "/users", UserController
     resources "/tasks", TaskController
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", TasksSpaWeb do
-  #   pipe_through :api
-  # end
 end

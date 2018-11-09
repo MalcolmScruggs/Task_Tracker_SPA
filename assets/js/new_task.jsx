@@ -7,7 +7,6 @@ export default class NewTask extends React.Component {
     constructor(props) {
         super(props);
 
-        //console.log("contruct", props);
         let {task} = props;
         this.state = {
             id: task.id,
@@ -15,7 +14,8 @@ export default class NewTask extends React.Component {
             desc: task.desc,
             completed: task.completed,
             time: task.time || 0,
-            assigned: task.assigned || ""
+            assigned: task.assigned || "",
+            redirect: false
         };
 
         this.changeTitle = this.changeTitle.bind(this);
@@ -47,12 +47,19 @@ export default class NewTask extends React.Component {
     }
 
     handleSubmit(ev) {
-        console.log("handle Submit", this.state);
         this.state.id ? api.edit_task(this.state) : api.new_task(this.state);
+        this.setState({redirect: true});
+    }
+
+    renderRedirect() {
+        if (this.state.redirect) {
+            return <Redirect to='/' />
+        }
     }
 
     render() {
         return <div className="col-12">
+            {this.renderRedirect()}
             <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
                     <label>Title</label>
@@ -82,9 +89,8 @@ export default class NewTask extends React.Component {
                            value={this.state.assigned} onChange={this.changeAssigned}/>
                 </div>
 
-                <button className="btn btn-primary">
-                    <Link to={"/"} onClick={this.handleSubmit} data-dismiss="modal"
-                          style={{ color: '#fff', textDecoration: 'none'}}>Submit</Link></button>
+                <Link to={"/"} className="btn btn-primary" onClick={this.handleSubmit} data-dismiss="modal"
+                      style={{ color: '#fff', textDecoration: 'none'}}>Submit</Link>
             </form>
         </div>
     }
