@@ -1,7 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import _ from 'lodash';
 
 import NewTask from './new_task';
 import api from './api';
